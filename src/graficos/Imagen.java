@@ -1,8 +1,9 @@
 package graficos;
 
 import java.awt.*;
-import java.io.File;
+// import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.*;
 import javax.imageio.*;
@@ -18,8 +19,8 @@ public class Imagen {
 class MarcoImagen extends JFrame {
     public MarcoImagen() {
         setTitle("Imagen");
-        setSize(400, 400);
-        setLocation(450, 250);
+        setSize(500, 500);
+        setLocation(50, 50);
         LaminaImagen lamina = new LaminaImagen();
         add(lamina);
 
@@ -27,16 +28,31 @@ class MarcoImagen extends JFrame {
 }
 
 class LaminaImagen extends JPanel {
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        File nuevaImagen = new File("src/graficos/image1.jpg");
+    public LaminaImagen() {
+        // File nuevaImagen = new File("src/graficos/image1.jpg");
         try {
-            imagen = ImageIO.read(nuevaImagen);
+            // imagen = ImageIO.read(nuevaImagen);
+            URL url = new URL(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_uGpQUdCRi5KIYQEwvLpCxnrRdf4i3PYG8Ur-WBa-oXD8fBFgy8L03Rm_jofzjW5CTrc&usqp=CAU");
+            imagen = ImageIO.read(url);
         } catch (IOException e) {
             System.out.println("Error " + e);
         }
-        g.drawImage(imagen, 10, 10, null);
+    }
 
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        int ancho = imagen.getWidth(this);
+        int alto = imagen.getHeight(this);
+        g.drawImage(imagen, 0, 0, null);
+        for (int i = 0; i < 500; i++) {
+            for (int j = 0; j < 500; j++) {
+                if (i + j > 0) {
+                    g.copyArea(0, 0, ancho, alto, i * ancho, j * alto);
+                }
+
+            }
+        }
     }
 
     private Image imagen;
