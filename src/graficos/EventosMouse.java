@@ -20,31 +20,38 @@ class MarcoMouse extends JFrame {
     }
 }
 
-class EventoMouse implements MouseListener {
+// class EventoMouse implements MouseListener {
 
-    @Override
+// @Override
+// public void mouseClicked(MouseEvent e) {
+// System.out.println("click");
+// }
+
+// @Override
+// public void mouseEntered(MouseEvent e) {
+// System.out.println("acabas de entrar");
+// }
+
+// @Override
+// public void mouseExited(MouseEvent e) {
+// System.out.println("acabas de salir");
+// }
+
+// @Override
+// public void mousePressed(MouseEvent e) {
+// System.out.println("presion");
+// }
+
+// @Override
+// public void mouseReleased(MouseEvent e) {
+// System.out.println("despresion");
+// }
+
+// }
+class EventoMouse extends MouseAdapter {
+
     public void mouseClicked(MouseEvent e) {
         System.out.println("click");
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        System.out.println("acabas de entrar");
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        System.out.println("acabas de salir");
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        System.out.println("presion");
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        System.out.println("despresion");
     }
 
 }
