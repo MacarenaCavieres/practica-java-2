@@ -16,7 +16,9 @@ class MarcoMouse extends JFrame {
         setVisible(true);
         setBounds(100, 50, 400, 400);
         EventoMouse mouse = new EventoMouse();
-        addMouseListener(mouse);
+        // addMouseListener(mouse);
+        addMouseMotionListener(mouse);
+
     }
 }
 
@@ -48,10 +50,32 @@ class MarcoMouse extends JFrame {
 // }
 
 // }
-class EventoMouse extends MouseAdapter {
+// class EventoMouse extends MouseAdapter {
+// // public void mouseClicked(MouseEvent e) {
+// // // System.out.println("Coordenada x: " + e.getX() + " Coordenada y: " +
+// // // e.getY());
+// // System.out.println(e.getClickCount());
+// // }
+// public void mousePressed(MouseEvent e) {
+// // System.out.println(e.getModifiersEx());
+// if (e.getModifiersEx() == MouseEvent.BUTTON1_DOWN_MASK) {
+// System.out.println("Izquierdo");
+// } else if (e.getModifiersEx() == MouseEvent.BUTTON2_DOWN_MASK) {
+// System.out.println("Rueda");
+// } else if (e.getModifiersEx() == MouseEvent.BUTTON3_DOWN_MASK) {
+// System.out.println("Derecho");
+// }
+// }
+// }
 
-    public void mouseClicked(MouseEvent e) {
-        System.out.println("click");
+class EventoMouse implements MouseMotionListener {
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        System.out.println("Arrastrando");
     }
 
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        System.out.println("Moviendo");
+    }
 }
